@@ -1,0 +1,213 @@
+:root {
+            --accent: #d84a2f; /* Gladiator Orange/Red */
+            --bg-dark: #050505;
+            --card-inner-bg: #111111;
+            --text-muted: #888;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Lexend', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 50px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* --- CARD CONTAINER --- */
+        .coach-card {
+            width: 320px;
+            height: 480px;
+            perspective: 1200px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .coach-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* --- FRONT & BACK FACES --- */
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- FRONT SIDE --- */
+        .face-front {
+            background: var(--card-inner-bg);
+        }
+
+        .coach-photo {
+            height: 70%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+            transition: 0.6s;
+        }
+
+        .coach-card:hover .coach-photo {
+            filter: grayscale(0%);
+        }
+
+        .name-plate {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #111 0%, #000 100%);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .name-plate h3 {
+            font-family: 'Bebas Neue';
+            font-size: 2.4rem;
+            margin: 0;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .name-plate span {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        /* --- BACK SIDE --- */
+        .face-back {
+            background: radial-gradient(circle at top left, #1a1a1a, #000);
+            transform: rotateY(180deg);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .stats-header {
+            font-family: 'Bebas Neue';
+            font-size: 1.8rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .metrics {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .metrics li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .m-label { color: var(--text-muted); text-transform: uppercase; }
+        .m-value { font-weight: 700; color: #fff; }
+
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: rgba(216, 74, 47, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .book-link {
+            margin-top: auto;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .book-link:hover {
+            background: #fff;
+            color: var(--accent);
+            box-shadow: 0 0 20px rgba(216, 74, 47, 0.4);
+        }
+        
+         /* --- RETURN BUTTON --- */
+        .btn-return {
+            align-self: flex-start; /* Keep it to the left of the card */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--surface);
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .btn-return .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-return:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(216, 74, 47, 0.4);
+        }
+
+        .btn-return:hover .icon {
+            transform: translateX(-5px);
+        }
+          /* Wrap everything to keep button above the card */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 400px;
+        }

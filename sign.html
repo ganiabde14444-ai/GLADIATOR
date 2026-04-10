@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gladiator Gym | Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.program/sighn.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <a class="return-link" href="Home.html">← RETURN TO ARENA</a>
+            <div class="hero-content">
+                <div class="brand">Gladiator Gym</div>
+                <h1>Claim Your Glory</h1>
+                <p>Join the legion. Create your account today to begin your transformation and access elite programming.</p>
+                <ul class="steps">
+                    <li><span class="dot"></span>Choose your specialized track</li>
+                    <li><span class="dot"></span>Unlock the member-only dashboard</li>
+                    <li><span class="dot"></span>Begin your 7-day trial immediately</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="signup-panel">
+            <header>
+                <h2>New Recruit</h2>
+                <p>Fill the scrolls to enlist in the Gladiator Legion.</p>
+            </header>
+            <form>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="fname">First Name</label>
+                        <input id="fname" type="text" placeholder="Leonidas" required>
+                    </div>
+                    <div class="field">
+                        <label for="lname">Last Name</label>
+                        <input id="lname" type="text" placeholder="Spartan" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="warrior@example.com" required>
+                </div>
+                <div class="field">
+                    <label for="track">Select Track</label>
+                    <select id="track">
+                        <option>Iron Phalanx (Strength)</option>
+                        <option>Gladiator Cardio (Conditioning)</option>
+                        <option>Tactical Boxing</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="password">Create Password</label>
+                    <input id="password" type="password" placeholder="Min. 8 characters" required>
+                </div>
+                <button type="submit">Enlist in the Legion</button>
+            </form>
+            <div class="alt">Already a Gladiator? <a href="log.html">Login to Arena</a></div>
+        </section>
+    </main>
+</body>
+</html>

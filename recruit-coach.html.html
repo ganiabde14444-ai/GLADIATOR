@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLADIATOR GYM | Recruit Coach</title>
+    <meta name="description" content="Recruit the next Gladiator Gym coach with an upgraded intake form, live preview, and light or dark viewing modes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.program/Recruit Coach.css">
+</head>
+<body data-theme="dark">
+    <header>
+        <nav class="nav-blur">
+            <a href="Home.html" class="brand-box" aria-label="Gladiator Gym home">
+                <span class="brand-title">Gladiator Gym</span>
+                <span class="brand-subtitle">Coach intake console</span>
+            </a>
+            <div class="nav-links">
+                <a href="Home.html">Arena</a>
+                <a href="coch.html" class="active">Coaches</a>
+                <a href="block.html">Programs</a>
+                <a href="contact.html">Reserve</a>
+                <div class="auth-btns">
+                    <a href="log.html">Login</a>
+                    <a href="sign.html" class="btn-signup">Sign Up</a>
+                </div>
+                <button class="theme-toggle" id="themeButton" type="button" title="Toggle theme" aria-label="Toggle theme">Dark</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="top-action">
+            <a href="coch.html" class="btn-return">
+                <span aria-hidden="true">&larr;</span>
+                <span>Return to roster</span>
+            </a>
+        </div>
+
+        <section class="hero">
+            <article class="hero-main">
+                <span class="eyebrow">Coaching operations</span>
+                <h1>Recruit the next leader</h1>
+                <p>Add a new coach with elite specialties, a clear lane, and a preview-ready public profile before they join the Gladiator roster.</p>
+                <div class="hero-actions">
+                    <a href="#coachForm" class="btn">Start intake</a>
+                    <a href="coch.html" class="btn btn-ghost">View current roster</a>
+                </div>
+            </article>
+
+            <aside class="hero-side">
+                <span class="card-kicker">Roster standards</span>
+                <h2>Every new coach needs clarity, authority, and a strong public profile.</h2>
+                <ul class="mini-list">
+                    <li><span class="dot"></span>Use strong action photos with a clean silhouette.</li>
+                    <li><span class="dot"></span>Keep expertise tags focused and readable.</li>
+                    <li><span class="dot"></span>Write the bio around member outcomes, not just credentials.</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="workspace">
+            <section class="panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="section-tag">Coach intake form</span>
+                        <h2>Stage a new profile</h2>
+                    </div>
+                    <p>Everything updates live in the preview card so you can shape the coach's public presence before saving.</p>
+                </div>
+
+                <form id="coachForm">
+                    <div class="form-grid">
+                        <label class="field wide">
+                            <span>Full name</span>
+                            <input id="name" type="text" placeholder="e.g. Marcus Vela" required>
+                        </label>
+                        <label class="field">
+                            <span>Primary role</span>
+                            <input id="title" type="text" placeholder="Head Strength Coach" required>
+                        </label>
+                        <label class="field">
+                            <span>Experience</span>
+                            <input id="experience" type="text" placeholder="12 Years" required>
+                        </label>
+                        <label class="field wide">
+                            <span>Photo URL</span>
+                            <input id="photo" type="url" placeholder="Paste image link here...">
+                        </label>
+                        <label class="field wide">
+                            <span>Expertise tags</span>
+                            <input id="tags" type="text" placeholder="Powerlifting, Mobility, Combat Prep">
+                        </label>
+                        <label class="field wide">
+                            <span>Bio</span>
+                            <textarea id="bio" placeholder="Describe their coaching philosophy..."></textarea>
+                        </label>
+                    </div>
+
+                    <div class="btn-row">
+                        <a href="coch.html" class="btn btn-ghost btn-cancel">Cancel</a>
+                        <button type="submit" class="btn-main">Save to roster</button>
+                    </div>
+                    <p id="notice" class="notice" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <aside class="preview-stack">
+                <div class="preview-card">
+                    <div class="preview-media" id="previewMedia" style="background-image: url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1374&auto=format&fit=crop');"></div>
+                    <div class="preview-body">
+                        <span class="preview-kicker">Live preview</span>
+                        <h2 class="coach-name" id="previewName">Marcus Vela</h2>
+                        <div class="coach-meta" id="previewMeta">Head Strength Coach | 12 Years</div>
+                        <div class="tag-wrap" id="previewTags">
+                            <span class="tag">Strength</span>
+                            <span class="tag">Conditioning</span>
+                        </div>
+                        <p class="preview-copy" id="previewBio">
+                            Builds powerful athletes through technical lifting and smart progression.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <script src="js/recruit-coach.js"></script>
+</body>
+</html>

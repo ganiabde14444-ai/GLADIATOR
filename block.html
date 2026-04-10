@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLADIATOR GYM | Program Vault Preview</title>
+    <meta name="description" content="Preview Gladiator Gym's locked training vault, compare tracks, and continue into membership checkout.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.program/block.css">
+</head>
+<body data-theme="dark">
+    <div id="lock-screen" class="lock-screen" role="dialog" aria-labelledby="lock-title" aria-modal="true">
+        <div class="lock-modal">
+            <section class="lock-copy">
+                <span class="modal-tag">Restricted access</span>
+                <h1 id="lock-title">Program Vault Locked</h1>
+                <p>Preview the structure first, then choose your membership tier to unlock the full programs hub and reserve priority sessions.</p>
+                <div class="lock-points">
+                    <span>Strength, conditioning, and boxing under one system</span>
+                    <span>Consistent Gold and Elite pricing</span>
+                    <span>Cleaner route from preview to checkout</span>
+                </div>
+            </section>
+
+            <section class="lock-actions">
+                <div class="access-card">
+                    <span class="access-label">Access route</span>
+                    <h2>Preview now, unlock when ready.</h2>
+                    <p>Browse the lanes, compare the training style, and continue to secure payment when you want full access.</p>
+                    <div class="access-buttons">
+                        <a href="pay.html?tier=elite" class="btn">Unlock Elite</a>
+                        <button id="previewButton" class="btn btn-ghost" type="button">Preview Programs</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="main-wrapper" class="main-wrapper">
+        <header>
+            <nav class="nav-shell">
+                <a href="Home.html" class="brand-box" aria-label="Gladiator Gym home">
+                    <img src="logo/gladiator.png" alt="Gladiator Gym logo" class="logo-img">
+                    <div class="brand-copy">
+                        <span class="brand-title">Gladiator Gym</span>
+                        <span class="brand-subtitle">Vault preview</span>
+                    </div>
+                </a>
+
+                <div class="nav-links">
+                    <a href="Home.html">Arena</a>
+                    <a href="coch.html">Coaches</a>
+                    <a href="block.html" class="active">Programs</a>
+                    <a href="contact.html">Reserve</a>
+                    <a href="pay.html">Membership</a>
+                    <button class="theme-toggle" id="themeButton" type="button" aria-label="Toggle theme">Dark Mode</button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="page">
+            <section class="hero reveal">
+                <div class="hero-copy">
+                    <span class="eyebrow">Preview the system</span>
+                    <h1>Choose the lane that matches your mission.</h1>
+                    <p>The broken gate page is now a real preview experience. Compare the training styles here, then move into checkout only when you are ready.</p>
+                    <div class="hero-actions">
+                        <a href="pay.html?tier=gold" class="btn">Unlock Gold</a>
+                        <a href="pay.html?tier=elite" class="btn btn-ghost">Unlock Elite</a>
+                    </div>
+                </div>
+
+                <aside class="hero-card">
+                    <span class="card-label">What changed</span>
+                    <ul class="hero-list">
+                        <li>Valid HTML structure instead of pasted markdown</li>
+                        <li>Working tabbed preview for all three programs</li>
+                        <li>Consistent theme handling and mobile layout</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section class="metric-strip reveal" aria-label="Preview metrics">
+                <article>
+                    <strong>3</strong>
+                    <span>tracks</span>
+                </article>
+                <article>
+                    <strong>12</strong>
+                    <span>week cycle</span>
+                </article>
+                <article>
+                    <strong>1:1</strong>
+                    <span>coach support</span>
+                </article>
+                <article>
+                    <strong>24/7</strong>
+                    <span>facility access</span>
+                </article>
+            </section>
+
+            <section class="tabs-shell reveal">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Program lanes</span>
+                        <h2>Preview the training style before you unlock it.</h2>
+                    </div>
+                    <p>Each tab gives a cleaner summary of the weekly rhythm, intended athlete, and full-page destination inside the members area.</p>
+                </div>
+
+                <div class="tabs" aria-label="Program tabs">
+                    <button class="tab-btn active" data-tab="strength" type="button">Iron Phalanx</button>
+                    <button class="tab-btn" data-tab="conditioning" type="button">Gladiator Cardio</button>
+                    <button class="tab-btn" data-tab="boxing" type="button">Tactical Boxing</button>
+                </div>
+
+                <section id="strength" class="tab-panel active">
+                    <div class="panel-copy">
+                        <span class="panel-tag">Strength lane</span>
+                        <h3>The Iron Phalanx</h3>
+                        <p>For athletes chasing force production, durable movement, and a dependable weekly lifting structure.</p>
+                        <ul class="detail-list">
+                            <li>Barbell strength waves with carry-based finishers</li>
+                            <li>Coach-led progression and performance check-ins</li>
+                            <li>Built for serious athletes, not casual drop-ins</li>
+                        </ul>
+                    </div>
+                    <div class="panel-side">
+                        <div class="panel-visual strength-visual"></div>
+                        <a href="The Iron Phalanx.html" class="text-link">Open full program page</a>
+                    </div>
+                </section>
+
+                <section id="conditioning" class="tab-panel">
+                    <div class="panel-copy">
+                        <span class="panel-tag">Conditioning lane</span>
+                        <h3>Gladiator Cardio</h3>
+                        <p>For members who want engine work, athletic circuits, and hard sessions that still feel intelligently programmed.</p>
+                        <ul class="detail-list">
+                            <li>Structured interval work and measurable output benchmarks</li>
+                            <li>Recovery-aware conditioning that still hits with intent</li>
+                            <li>Compatible with fight prep and strength work</li>
+                        </ul>
+                    </div>
+                    <div class="panel-side">
+                        <div class="panel-visual cardio-visual"></div>
+                        <a href="Gladiator Cardio.html" class="text-link">Open full program page</a>
+                    </div>
+                </section>
+
+                <section id="boxing" class="tab-panel">
+                    <div class="panel-copy">
+                        <span class="panel-tag">Boxing lane</span>
+                        <h3>Tactical Boxing</h3>
+                        <p>For athletes who want technical rounds, sharper timing, and coach-guided tactical decision making.</p>
+                        <ul class="detail-list">
+                            <li>Technical sparring with more control than chaos</li>
+                            <li>Pad, bag, and partner work with feedback loops</li>
+                            <li>Footwork and ring IQ built into every block</li>
+                        </ul>
+                    </div>
+                    <div class="panel-side">
+                        <div class="panel-visual boxing-visual"></div>
+                        <a href="Tactical Boxing.html" class="text-link">Open full program page</a>
+                    </div>
+                </section>
+            </section>
+
+            <section class="membership-preview reveal">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Membership access</span>
+                        <h2>Unlock the vault with the right tier.</h2>
+                    </div>
+                    <p>The preview and payment pages now agree on price and positioning, so the upgrade path feels deliberate instead of confusing.</p>
+                </div>
+
+                <div class="membership-grid">
+                    <article class="member-card">
+                        <span class="plan-tag">Gold</span>
+                        <h3>$69<span>/month</span></h3>
+                        <ul class="detail-list">
+                            <li>3 coached sessions per week</li>
+                            <li>Recovery zone access</li>
+                            <li>Open floor availability</li>
+                        </ul>
+                        <a href="pay.html?tier=gold" class="btn">Choose Gold</a>
+                    </article>
+
+                    <article class="member-card elite-card">
+                        <span class="plan-tag">Elite</span>
+                        <h3>$129<span>/month</span></h3>
+                        <ul class="detail-list">
+                            <li>Unlimited access and class entry</li>
+                            <li>Dedicated coach check-ins</li>
+                            <li>Priority scheduling windows</li>
+                        </ul>
+                        <a href="pay.html?tier=elite" class="btn">Choose Elite</a>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            &copy; 2026 Gladiator Gym &middot; Program vault preview.
+        </footer>
+    </div>
+
+    <script src="js/block.js"></script>
+</body>
+</html>

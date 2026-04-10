@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLADIATOR GYM | Reserve Your Spot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.program/contact.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-blur">
+            <a href="Home.html" class="logo-box">
+                <img src="logo/gladiator.png" alt="Logo" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="Home.html">Arena</a>
+                <a href="coch.html">Coaches</a>
+                <a href="block.html">Programs</a>
+                <a href="contact.html" class="active">Reserve</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="reservation-container">
+            
+            <section class="info-panel">
+                <h1>Enter The Arena</h1>
+                <p>Secure your training slot. We limit attendance to ensure every athlete has the space and equipment to perform at 100%.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div style="width:10px; height:10px; background:var(--accent); border-radius:50%;"></div>
+                        <span>Elite recovery zones included</span>
+                    </div>
+                    <div class="feature-item">
+                        <div style="width:10px; height:10px; background:var(--accent); border-radius:50%;"></div>
+                        <span>Hydration & Towel service</span>
+                    </div>
+                    <div class="feature-item">
+                        <div style="width:10px; height:10px; background:var(--accent); border-radius:50%;"></div>
+                        <span>Instant coach matching</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-card">
+                <h2>Booking Details</h2>
+                <form id="resForm">
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="name" placeholder="Leonidas of Sparta" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" placeholder="warrior@gym.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Session Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <input type="time" id="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Target Intensity</label>
+                            <select id="level" required>
+                                <option value="" disabled selected>Select Level</option>
+                                <option>Beginner (Foundation)</option>
+                                <option>Intermediate (Power)</option>
+                                <option>Advanced (Gladiator)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Optional">
+                        </div>
+                        <div class="form-group full">
+                            <label>Specific Training Goals / Injuries</label>
+                            <textarea id="notes" rows="3" placeholder="I want to focus on deadlifts..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="subBtn">Secure My Spot</button>
+                    <div id="msg"></div>
+                </form>
+            </section>
+        </div>
+
+        <footer>
+            &copy; 2026 Gladiator Gym &bull; Unleash the beast.
+        </footer>
+    </main>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>

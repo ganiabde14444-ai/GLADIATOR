@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLADIATOR GYM | Member Profile</title>
+    <meta name="description" content="Dynamic Gladiator Gym member profile with editable data, progress tracking, and live activity updates.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090909;
+            --bg-mid: #17120f;
+            --surface: #f3eadf;
+            --surface-soft: #e8dccd;
+            --ink: #211915;
+            --ink-soft: #6f6258;
+            --text: #f3eadf;
+            --text-muted: rgba(243, 234, 223, 0.75);
+            --accent: #d84a2f;
+            --accent-strong: #a92f1d;
+            --accent-glow: rgba(216, 74, 47, 0.25);
+            --gold: #d3a252;
+            --line: rgba(255, 255, 255, 0.1);
+            --glass: rgba(17, 13, 11, 0.8);
+            --panel: rgba(255, 255, 255, 0.05);
+            --panel-strong: rgba(255, 255, 255, 0.08);
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+            --success: #4bb87a;
+            --danger: #d55a4a;
+        }
+
+        body[data-theme="light"] {
+            --bg-dark: #efe2d4;
+            --bg-mid: #f8f0e6;
+            --surface: #ffffff;
+            --surface-soft: #f3e7da;
+            --ink: #241b15;
+            --ink-soft: #6d6057;
+            --text: #241b15;
+            --text-muted: rgba(36, 27, 21, 0.72);
+            --accent: #cb492f;
+            --accent-strong: #9d2f1d;
+            --accent-glow: rgba(203, 73, 47, 0.18);
+            --gold: #bb8a39;
+            --line: rgba(34, 25, 21, 0.08);
+            --glass: rgba(255, 247, 238, 0.8);
+            --panel: rgba(255, 255, 255, 0.72);
+            --panel-strong: rgba(255, 255, 255, 0.92);
+            --shadow: 0 20px 60px rgba(69, 44, 26, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: "Lexend", sans-serif;
+            line-height: 1.6;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(216, 74, 47, 0.24), transparent 28%),
+                radial-gradient(circle at 88% 12%, rgba(211, 162, 82, 0.12), transparent 18%),
+                linear-gradient(180deg, var(--bg-dark), var(--bg-mid) 55%, var(--bg-dark));
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .nav-shell,
+        .page,
+        .modal-card {
+            width: min(1180px, calc(100vw - 32px));
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            padding: 18px 0 0;
+        }
+
+        .nav-shell {
+            margin: 0 auto;
+            padding: 14px 20px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 14px var(--accent-glow));
+        }
+
+        .brand-title,
+        .brand-subtitle,
+        .nav-links a,
+        .theme-toggle,
+        .eyebrow,
+        .btn,
+        .tab-btn,
+        .panel-label,
+        .metric-label {
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .brand-title {
+            display: block;
+            font: 400 2rem/0.9 "Bebas Neue", sans-serif;
+        }
+
+        .brand-subtitle {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a,
+        .theme-toggle {
+            padding: 11px 15px;
+            border-radius: 999px;
+            color: var(--text-muted);
+            font-size: 0.74rem;
+            font-weight: 800;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active,
+        .theme-toggle:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        body[data-theme="light"] .nav-links a:hover,
+        body[data-theme="light"] .nav-links a.active,
+        body[data-theme="light"] .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .theme-toggle {
+            border: 1px solid var(--line);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .page {
+            margin: 28px auto 64px;
+            display: grid;
+            gap: 22px;
+        }
+
+        .profile-hero,
+        .stats-grid,
+        .content-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .profile-hero {
+            grid-template-columns: 360px 1fr;
+            align-items: stretch;
+        }
+
+        .profile-card,
+        .hero-main,
+        .metric-card,
+        .panel-card,
+        .side-card,
+        .timeline-card,
+        .modal-body {
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            border-radius: 30px;
+        }
+
+        .profile-card,
+        .hero-main,
+        .metric-card,
+        .panel-card,
+        .side-card,
+        .timeline-card {
+            background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+        }
+
+        .profile-card {
+            padding: 28px;
+            display: grid;
+            align-content: start;
+            gap: 18px;
+        }
+
+        .avatar-wrap {
+            width: 170px;
+            height: 170px;
+            margin: 0 auto;
+            padding: 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            box-shadow: 0 0 24px var(--accent-glow);
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #0f0f0f;
+        }
+
+        .identity {
+            text-align: center;
+        }
+
+        .identity h1,
+        .hero-main h2,
+        .panel-card h3,
+        .side-card h3,
+        .timeline-card h3,
+        .modal-body h2 {
+            margin: 0;
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .identity h1 {
+            margin-top: 6px;
+            font-size: 3rem;
+            line-height: 0.92;
+        }
+
+        .identity p,
+        .hero-copy p,
+        .profile-meta,
+        .panel-card p,
+        .side-card p,
+        .timeline-item p,
+        .label,
+        .field-label,
+        .empty-message {
+            color: var(--text-muted);
+        }
+
+        .eyebrow,
+        .panel-label {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            background: rgba(216, 74, 47, 0.14);
+            color: #ffd9cb;
+        }
+
+        body[data-theme="light"] .eyebrow,
+        body[data-theme="light"] .panel-label {
+            color: var(--accent-strong);
+            background: rgba(203, 73, 47, 0.1);
+        }
+
+        .profile-meta {
+            display: grid;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .xp-block {
+            display: grid;
+            gap: 10px;
+        }
+
+        .xp-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .progress-track,
+        .skill-track {
+            width: 100%;
+            height: 12px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        body[data-theme="light"] .progress-track,
+        body[data-theme="light"] .skill-track {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .progress-fill,
+        .skill-fill {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            transition: width 0.7s ease;
+        }
+
+        .sidebar-actions,
+        .quick-actions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            padding: 0 20px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+
+        body[data-theme="light"] .btn-ghost {
+            background: rgba(255, 255, 255, 0.62);
+            color: var(--ink);
+        }
+
+        .btn-danger {
+            background: rgba(213, 90, 74, 0.14);
+            color: #ffc1b7;
+        }
+
+        body[data-theme="light"] .btn-danger {
+            color: var(--danger);
+        }
+
+        .hero-main {
+            min-height: 420px;
+            padding: 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.78)),
+                url("https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+        }
+
+        .hero-copy h2 {
+            margin-top: 14px;
+            font-size: clamp(3.3rem, 6vw, 5rem);
+            line-height: 0.9;
+            max-width: 10ch;
+        }
+
+        .hero-copy p {
+            max-width: 56ch;
+            margin: 14px 0 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .metric-card {
+            padding: 22px;
+        }
+
+        .metric-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+
+        .metric-value {
+            display: block;
+            margin-top: 10px;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 3rem;
+            line-height: 0.9;
+        }
+
+        .metric-subtext {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .content-grid {
+            grid-template-columns: 1.28fr 0.72fr;
+        }
+
+        .panel-card,
+        .side-card,
+        .timeline-card {
+            padding: 26px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .tab-btn {
+            min-height: 44px;
+            padding: 0 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        body[data-theme="light"] .tab-btn {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: grid;
+            gap: 18px;
+        }
+
+        .overview-grid,
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .panel-card h3,
+        .side-card h3,
+        .timeline-card h3 {
+            margin-top: 12px;
+            font-size: 2.2rem;
+            line-height: 0.94;
+        }
+
+        .about-copy {
+            margin: 14px 0 0;
+        }
+
+        .goal-list,
+        .upcoming-list,
+        .achievement-list,
+        .timeline-list,
+        .workout-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .goal-item,
+        .upcoming-item,
+        .achievement-item,
+        .timeline-item,
+        .workout-item {
+            display: grid;
+            gap: 6px;
+            padding: 14px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        body[data-theme="light"] .goal-item,
+        body[data-theme="light"] .upcoming-item,
+        body[data-theme="light"] .achievement-item,
+        body[data-theme="light"] .timeline-item,
+        body[data-theme="light"] .workout-item {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .goal-item strong,
+        .achievement-item strong,
+        .workout-item strong,
+        .timeline-item strong,
+        .upcoming-item strong {
+            font-size: 0.95rem;
+        }
+
+        .check-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-pill::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 14px rgba(75, 184, 122, 0.22);
+        }
+
+        .skill-row {
+            display: grid;
+            gap: 8px;
+        }
+
+        .skill-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .chart {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 10px;
+            align-items: end;
+            min-height: 220px;
+        }
+
+        .chart-bar {
+            display: grid;
+            gap: 8px;
+            justify-items: center;
+        }
+
+        .bar-visual {
+            width: 100%;
+            max-width: 42px;
+            min-height: 28px;
+            border-radius: 18px 18px 10px 10px;
+            background: linear-gradient(180deg, var(--gold), var(--accent));
+            box-shadow: 0 10px 24px rgba(216, 74, 47, 0.18);
+            transition: height 0.5s ease;
+        }
+
+        .bar-day {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .bar-value {
+            font-size: 0.72rem;
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .side-stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .status-box {
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        body[data-theme="light"] .status-box {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .status-box strong {
+            display: block;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 2rem;
+            line-height: 0.9;
+        }
+
+        .status-box span {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item {
+            grid-template-columns: auto 1fr auto;
+            align-items: start;
+            gap: 14px;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            margin-top: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .timeline-date {
+            font-size: 0.74rem;
+            color: var(--gold);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .empty-message {
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(7, 7, 7, 0.72);
+            backdrop-filter: blur(14px);
+            z-index: 80;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-card {
+            max-width: 760px;
+        }
+
+        .modal-body {
+            padding: 28px;
+            background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+            color: var(--ink);
+        }
+
+        .modal-body h2 {
+            font-size: 3rem;
+            line-height: 0.92;
+        }
+
+        .modal-copy {
+            margin: 12px 0 20px;
+            color: var(--ink-soft);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field.full {
+            grid-column: span 2;
+        }
+
+        .field-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(33, 25, 21, 0.14);
+            border-radius: 18px;
+            padding: 15px 16px;
+            background: rgba(255, 255, 255, 0.84);
+            color: var(--ink);
+        }
+
+        .field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        @media (max-width: 1080px) {
+            .profile-hero,
+            .content-grid,
+            .stats-grid,
+            .overview-grid,
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav-shell,
+            .page,
+            .modal-card {
+                width: min(calc(100vw - 24px), 1180px);
+            }
+
+            .nav-links,
+            .hero-actions,
+            .sidebar-actions,
+            .quick-actions,
+            .modal-actions {
+                width: 100%;
+            }
+
+            .nav-links,
+            .hero-actions,
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .profile-card,
+            .hero-main,
+            .metric-card,
+            .panel-card,
+            .side-card,
+            .timeline-card,
+            .modal-body {
+                padding: 22px;
+            }
+
+            .form-grid,
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: span 1;
+            }
+
+            .brand-copy {
+                display: none;
+            }
+
+            .btn,
+            .theme-toggle,
+            .nav-links a,
+            .tab-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <nav class="nav-shell">
+            <a href="Home.html" class="brand-box" aria-label="Gladiator Gym home">
+                <img src="logo/gladiator.png" alt="Gladiator Gym logo" class="logo-img">
+                <div class="brand-copy">
+                    <span class="brand-title">Gladiator Gym</span>
+                    <span class="brand-subtitle">Member profile</span>
+                </div>
+            </a>
+
+            <div class="nav-links">
+                <a href="Home.html">Arena</a>
+                <a href="block.html">Programs</a>
+                <a href="coch.html">Coaches</a>
+                <a href="test2.html" class="active">Profile</a>
+                <button id="themeButton" class="theme-toggle" type="button" aria-label="Toggle theme">Dark Mode</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="profile-hero reveal">
+            <aside class="profile-card">
+                <div class="avatar-wrap">
+                    <img id="profileAvatar" src="" alt="Member avatar">
+                </div>
+
+                <div class="identity">
+                    <span class="eyebrow" id="profileTier">Elite Member</span>
+                    <h1 id="profileName">Marcus Aurelius</h1>
+                    <p id="profileTitle">Performance Fighter</p>
+                </div>
+
+                <div class="profile-meta">
+                    <span id="profileJoin">Joined January 2026</span>
+                    <span id="profileLocation">Paris Fight Floor</span>
+                    <span id="profileFocus">Focus: Boxing and conditioning</span>
+                </div>
+
+                <div class="xp-block">
+                    <div class="xp-head">
+                        <span>Level <strong id="profileLevel">17</strong></span>
+                        <span id="xpText">8,450 / 10,000 XP</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="xpFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-actions">
+                    <button id="editProfileButton" class="btn" type="button">Edit Profile</button>
+                    <button id="completeWorkoutButton" class="btn btn-ghost" type="button">Complete Workout</button>
+                    <button id="resetProfileButton" class="btn btn-danger" type="button">Reset Profile</button>
+                </div>
+            </aside>
+
+            <section class="hero-main">
+                <div class="hero-copy">
+                    <span class="eyebrow">Dynamic dashboard</span>
+                    <h2 id="heroHeadline">Built for disciplined progress.</h2>
+                    <p id="heroBio">Tracking your sessions, progression, streak, and recent activity in one profile space that updates live inside the browser.</p>
+                </div>
+
+                <div class="hero-actions">
+                    <button id="addXpButton" class="btn" type="button">Add 250 XP</button>
+                    <button id="addStreakButton" class="btn btn-ghost" type="button">Extend Streak</button>
+                </div>
+            </section>
+        </section>
+
+        <section class="stats-grid reveal" aria-label="Profile metrics">
+            <article class="metric-card">
+                <span class="metric-label">Total Sessions</span>
+                <span class="metric-value" data-metric="sessions">0</span>
+                <div class="metric-subtext">Completed arena sessions this cycle.</div>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">Hours Trained</span>
+                <span class="metric-value" data-metric="hours">0</span>
+                <div class="metric-subtext">Total coached and solo training time.</div>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">Current Streak</span>
+                <span class="metric-value" data-metric="streak">0</span>
+                <div class="metric-subtext">Consecutive training days protected.</div>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">Achievements</span>
+                <span class="metric-value" data-metric="achievements">0</span>
+                <div class="metric-subtext">Unlocked badges and performance marks.</div>
+            </article>
+        </section>
+
+        <section class="content-grid reveal">
+            <div class="main-stack">
+                <article class="panel-card">
+                    <div class="tabs" aria-label="Profile tabs">
+                        <button class="tab-btn active" data-tab="overview" type="button">Overview</button>
+                        <button class="tab-btn" data-tab="progress" type="button">Progress</button>
+                        <button class="tab-btn" data-tab="activity" type="button">Activity</button>
+                    </div>
+
+                    <section id="overview" class="tab-panel active">
+                        <div class="overview-grid">
+                            <div class="panel-card">
+                                <span class="panel-label">Member story</span>
+                                <h3>Profile Summary</h3>
+                                <p id="aboutCopy" class="about-copy"></p>
+                            </div>
+
+                            <div class="panel-card">
+                                <span class="panel-label">Current goals</span>
+                                <h3>Targets This Month</h3>
+                                <ul id="goalList" class="goal-list"></ul>
+                            </div>
+
+                            <div class="panel-card">
+                                <span class="panel-label">Upcoming sessions</span>
+                                <h3>Booked Training</h3>
+                                <ul id="upcomingList" class="upcoming-list"></ul>
+                            </div>
+
+                            <div class="panel-card">
+                                <span class="panel-label">Unlocked marks</span>
+                                <h3>Achievements</h3>
+                                <ul id="achievementList" class="achievement-list"></ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="progress" class="tab-panel">
+                        <div class="progress-grid">
+                            <div class="panel-card">
+                                <span class="panel-label">Skill progress</span>
+                                <h3>Performance Focus</h3>
+                                <div id="skillsWrap" class="quick-actions"></div>
+                            </div>
+
+                            <div class="panel-card">
+                                <span class="panel-label">Weekly output</span>
+                                <h3>Training Load</h3>
+                                <div id="weeklyChart" class="chart" aria-label="Weekly training chart"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="activity" class="tab-panel">
+                        <div class="panel-card">
+                            <span class="panel-label">Recent sessions</span>
+                            <h3>Workout Feed</h3>
+                            <ul id="workoutList" class="workout-list"></ul>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <aside class="side-stack">
+                <article class="side-card">
+                    <span class="panel-label">Live status</span>
+                    <h3>Current Standing</h3>
+                    <div class="status-grid">
+                        <div class="status-box">
+                            <strong id="rankValue">17</strong>
+                            <span>Current level</span>
+                        </div>
+                        <div class="status-box">
+                            <strong id="tierValue">Elite</strong>
+                            <span>Membership</span>
+                        </div>
+                        <div class="status-box">
+                            <strong id="nextGoalValue">3</strong>
+                            <span>Goals active</span>
+                        </div>
+                        <div class="status-box">
+                            <strong id="sessionValue">142</strong>
+                            <span>Sessions done</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-card">
+                    <span class="panel-label">Activity stream</span>
+                    <h3>Timeline</h3>
+                    <ul id="timelineList" class="timeline-list"></ul>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <div id="profileModal" class="modal" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-body">
+                <span class="eyebrow">Edit member profile</span>
+                <h2>Update Your Profile</h2>
+                <p class="modal-copy">Change the profile details below and the dashboard will update immediately. Everything is stored locally in your browser.</p>
+
+                <form id="profileForm">
+                    <div class="form-grid">
+                        <label class="field">
+                            <span class="field-label">Name</span>
+                            <input id="formName" type="text" required>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Title</span>
+                            <input id="formTitle" type="text" required>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Membership tier</span>
+                            <input id="formTier" type="text" required>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Avatar image URL</span>
+                            <input id="formAvatar" type="url" required>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Gym location</span>
+                            <input id="formLocation" type="text" required>
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Training focus</span>
+                            <input id="formFocus" type="text" required>
+                        </label>
+
+                        <label class="field full">
+                            <span class="field-label">Profile bio</span>
+                            <textarea id="formBio" required></textarea>
+                        </label>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button id="cancelModalButton" class="btn btn-ghost" type="button">Cancel</button>
+                        <button class="btn" type="submit">Save Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = "gladiator_dynamic_profile";
+        const THEME_KEY = "gladiator-theme";
+        const defaultState = {
+            name: "Marcus Aurelius",
+            title: "Performance Fighter",
+            tier: "Elite Member",
+            avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=800&q=80",
+            location: "Paris Fight Floor",
+            focus: "Boxing and conditioning",
+            joined: "Joined January 2026",
+            bio: "Focused on sharp footwork, clean conditioning blocks, and consistent weekly structure. This profile is designed to feel like a real member command center, not just a static page.",
+            headline: "Built for disciplined progress.",
+            level: 1,
+            xp: 0,
+            xpGoal: 0,
+            stats: {
+                sessions: 0,
+                hours: 0,
+                streak: 0,
+                achievements: 0
+            },
+            goals: [
+                "Land 16 total sessions this month",
+                "Increase sparring composure under pressure",
+                "Push conditioning score above 92"
+            ],
+            upcoming: [
+                { title: "Tactical Boxing", time: "Today - 19:00", coach: "Coach Reina Torres" },
+                { title: "Gladiator Cardio", time: "Tomorrow - 07:30", coach: "Coach Andre Kade" },
+                { title: "Recovery and Mobility", time: "Saturday - 10:00", coach: "Recovery Lab" }
+            ],
+            achievements: [
+                "10 day training streak protected",
+                "Iron Phalanx strength benchmark cleared",
+                "Boxing reaction score hit personal best"
+            ],
+            skills: [
+                { name: "Conditioning", value: 86 },
+                { name: "Power Output", value: 74 },
+                { name: "Ring IQ", value: 91 },
+                { name: "Mobility", value: 68 }
+            ],
+            weeklyLoad: [
+                { day: "Mon", value: 72 },
+                { day: "Tue", value: 88 },
+                { day: "Wed", value: 61 },
+                { day: "Thu", value: 95 },
+                { day: "Fri", value: 79 },
+                { day: "Sat", value: 66 },
+                { day: "Sun", value: 40 }
+            ],
+            workouts: [
+                { title: "Tactical Boxing", summary: "Nine technical rounds, sharp jab timing, 420 XP earned." },
+                { title: "Iron Phalanx", summary: "Heavy lower body wave completed with carry finisher." },
+                { title: "Gladiator Cardio", summary: "Assault bike intervals and sled pushes logged cleanly." }
+            ],
+            timeline: [
+                { title: "Completed Tactical Boxing", detail: "Reaction score improved and session marked as complete.", date: "Today" },
+                { title: "Recovered 250 XP boost", detail: "Manual progress boost added from coach review.", date: "Yesterday" },
+                { title: "Unlocked New Achievement", detail: "Boxing reaction benchmark reached a new personal best.", date: "Mar 25" }
+            ]
+        };
+
+        const profileName = document.getElementById("profileName");
+        const profileTitle = document.getElementById("profileTitle");
+        const profileTier = document.getElementById("profileTier");
+        const profileAvatar = document.getElementById("profileAvatar");
+        const profileJoin = document.getElementById("profileJoin");
+        const profileLocation = document.getElementById("profileLocation");
+        const profileFocus = document.getElementById("profileFocus");
+        const profileLevel = document.getElementById("profileLevel");
+        const xpText = document.getElementById("xpText");
+        const xpFill = document.getElementById("xpFill");
+        const heroHeadline = document.getElementById("heroHeadline");
+        const heroBio = document.getElementById("heroBio");
+        const aboutCopy = document.getElementById("aboutCopy");
+        const goalList = document.getElementById("goalList");
+        const upcomingList = document.getElementById("upcomingList");
+        const achievementList = document.getElementById("achievementList");
+        const workoutList = document.getElementById("workoutList");
+        const timelineList = document.getElementById("timelineList");
+        const skillsWrap = document.getElementById("skillsWrap");
+        const weeklyChart = document.getElementById("weeklyChart");
+        const rankValue = document.getElementById("rankValue");
+        const tierValue = document.getElementById("tierValue");
+        const nextGoalValue = document.getElementById("nextGoalValue");
+        const sessionValue = document.getElementById("sessionValue");
+        const metricNodes = document.querySelectorAll("[data-metric]");
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        const tabPanels = document.querySelectorAll(".tab-panel");
+        const themeButton = document.getElementById("themeButton");
+        const profileModal = document.getElementById("profileModal");
+        const profileForm = document.getElementById("profileForm");
+        const editProfileButton = document.getElementById("editProfileButton");
+        const cancelModalButton = document.getElementById("cancelModalButton");
+        const addXpButton = document.getElementById("addXpButton");
+        const addStreakButton = document.getElementById("addStreakButton");
+        const completeWorkoutButton = document.getElementById("completeWorkoutButton");
+        const resetProfileButton = document.getElementById("resetProfileButton");
+        const formName = document.getElementById("formName");
+        const formTitle = document.getElementById("formTitle");
+        const formTier = document.getElementById("formTier");
+        const formAvatar = document.getElementById("formAvatar");
+        const formLocation = document.getElementById("formLocation");
+        const formFocus = document.getElementById("formFocus");
+        const formBio = document.getElementById("formBio");
+
+        function cloneDefaultState() {
+            return JSON.parse(JSON.stringify(defaultState));
+        }
+
+        function loadState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+
+            if (!saved) {
+                return cloneDefaultState();
+            }
+
+            try {
+                return { ...cloneDefaultState(), ...JSON.parse(saved) };
+            } catch (error) {
+                return cloneDefaultState();
+            }
+        }
+
+        let state = loadState();
+
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function applyTheme(theme) {
+            const activeTheme = theme === "light" ? "light" : "dark";
+            const nextTheme = activeTheme === "dark" ? "light" : "dark";
+            document.body.setAttribute("data-theme", activeTheme);
+            localStorage.setItem(THEME_KEY, activeTheme);
+            themeButton.textContent = activeTheme === "dark" ? "Dark Mode" : "Light Mode";
+            themeButton.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+            themeButton.setAttribute("aria-pressed", String(activeTheme === "light"));
+        }
+
+        function formatNumber(value) {
+            return Number(value).toLocaleString("en-US");
+        }
+
+        function renderMetric(node, value) {
+            const current = Number(node.textContent.replace(/[^0-9.]/g, "")) || 0;
+            const duration = 550;
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const next = Math.round(current + (value - current) * progress);
+                node.textContent = formatNumber(next);
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        function renderList(target, items, formatter) {
+            target.innerHTML = "";
+
+            if (!items.length) {
+                target.innerHTML = `<li class="empty-message">No items yet.</li>`;
+                return;
+            }
+
+            items.forEach((item) => {
+                const li = document.createElement("li");
+                li.className = formatter.className;
+                li.innerHTML = formatter.template(item);
+                target.appendChild(li);
+            });
+        }
+
+        function renderSkills() {
+            skillsWrap.innerHTML = "";
+
+            state.skills.forEach((skill) => {
+                const row = document.createElement("div");
+                row.className = "skill-row";
+                row.innerHTML = `
+                    <div class="skill-head">
+                        <span>${skill.name}</span>
+                        <span>${skill.value}%</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" data-skill-fill="${skill.value}"></div>
+                    </div>
+                `;
+                skillsWrap.appendChild(row);
+            });
+
+            requestAnimationFrame(() => {
+                document.querySelectorAll("[data-skill-fill]").forEach((fill) => {
+                    fill.style.width = `${fill.dataset.skillFill}%`;
+                });
+            });
+        }
+
+        function renderChart() {
+            weeklyChart.innerHTML = "";
+
+            state.weeklyLoad.forEach((entry) => {
+                const bar = document.createElement("div");
+                bar.className = "chart-bar";
+                bar.innerHTML = `
+                    <span class="bar-value">${entry.value}</span>
+                    <div class="bar-visual" style="height:${Math.max(entry.value * 1.6, 28)}px;"></div>
+                    <span class="bar-day">${entry.day}</span>
+                `;
+                weeklyChart.appendChild(bar);
+            });
+        }
+
+        function renderState() {
+            profileName.textContent = state.name;
+            profileTitle.textContent = state.title;
+            profileTier.textContent = state.tier;
+            profileAvatar.src = state.avatar;
+            profileJoin.textContent = state.joined;
+            profileLocation.textContent = state.location;
+            profileFocus.textContent = `Focus: ${state.focus}`;
+            profileLevel.textContent = state.level;
+            heroHeadline.textContent = state.headline;
+            heroBio.textContent = state.bio;
+            aboutCopy.textContent = state.bio;
+            xpText.textContent = `${formatNumber(state.xp)} / ${formatNumber(state.xpGoal)} XP`;
+            xpFill.style.width = `${Math.min((state.xp / state.xpGoal) * 100, 100)}%`;
+            rankValue.textContent = state.level;
+            tierValue.textContent = state.tier.split(" ")[0];
+            nextGoalValue.textContent = state.goals.length;
+            sessionValue.textContent = formatNumber(state.stats.sessions);
+
+            metricNodes.forEach((node) => {
+                renderMetric(node, state.stats[node.dataset.metric]);
+            });
+
+            renderList(goalList, state.goals, {
+                className: "goal-item",
+                template: (item) => `<span class="check-pill">${item}</span>`
+            });
+
+            renderList(upcomingList, state.upcoming, {
+                className: "upcoming-item",
+                template: (item) => `<strong>${item.title}</strong><span class="label">${item.time}</span><span class="label">${item.coach}</span>`
+            });
+
+            renderList(achievementList, state.achievements, {
+                className: "achievement-item",
+                template: (item) => `<strong>${item}</strong><span class="label">Unlocked in your current campaign.</span>`
+            });
+
+            renderList(workoutList, state.workouts, {
+                className: "workout-item",
+                template: (item) => `<strong>${item.title}</strong><span class="label">${item.summary}</span>`
+            });
+
+            renderList(timelineList, state.timeline, {
+                className: "timeline-item",
+                template: (item) => `<span class="timeline-dot"></span><div><strong>${item.title}</strong><p>${item.detail}</p></div><span class="timeline-date">${item.date}</span>`
+            });
+
+            renderSkills();
+            renderChart();
+        }
+
+        function openModal() {
+            formName.value = state.name;
+            formTitle.value = state.title;
+            formTier.value = state.tier;
+            formAvatar.value = state.avatar;
+            formLocation.value = state.location;
+            formFocus.value = state.focus;
+            formBio.value = state.bio;
+            profileModal.classList.add("open");
+            profileModal.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal() {
+            profileModal.classList.remove("open");
+            profileModal.setAttribute("aria-hidden", "true");
+        }
+
+        function addTimelineEntry(title, detail, date = "Now") {
+            state.timeline.unshift({ title, detail, date });
+            state.timeline = state.timeline.slice(0, 6);
+        }
+
+        function addWorkoutEntry(title, summary) {
+            state.workouts.unshift({ title, summary });
+            state.workouts = state.workouts.slice(0, 5);
+        }
+
+        function boostXp(amount) {
+            state.xp += amount;
+
+            if (state.xp >= state.xpGoal) {
+                state.xp -= state.xpGoal;
+                state.level += 1;
+                addTimelineEntry("Level up unlocked", `You advanced to level ${state.level} after a strong training push.`);
+                state.achievements.unshift(`Level ${state.level} reached`);
+                state.stats.achievements = state.achievements.length;
+            }
+        }
+
+        function activateTab(targetId) {
+            tabButtons.forEach((button) => {
+                button.classList.toggle("active", button.dataset.tab === targetId);
+            });
+
+            tabPanels.forEach((panel) => {
+                panel.classList.toggle("active", panel.id === targetId);
+            });
+        }
+
+        themeButton.addEventListener("click", () => {
+            const current = document.body.getAttribute("data-theme") || "dark";
+            applyTheme(current === "dark" ? "light" : "dark");
+        });
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => activateTab(button.dataset.tab));
+        });
+
+        editProfileButton.addEventListener("click", openModal);
+        cancelModalButton.addEventListener("click", closeModal);
+
+        profileModal.addEventListener("click", (event) => {
+            if (event.target === profileModal) {
+                closeModal();
+            }
+        });
+
+        profileForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            state.name = formName.value.trim();
+            state.title = formTitle.value.trim();
+            state.tier = formTier.value.trim();
+            state.avatar = formAvatar.value.trim();
+            state.location = formLocation.value.trim();
+            state.focus = formFocus.value.trim();
+            state.bio = formBio.value.trim();
+            state.headline = `${state.name.split(" ")[0]}'s profile is built for momentum.`;
+
+            addTimelineEntry("Profile updated", "Your member details were refreshed from the profile editor.");
+            saveState();
+            renderState();
+            closeModal();
+        });
+
+        addXpButton.addEventListener("click", () => {
+            boostXp(250);
+            addTimelineEntry("XP increased", "Added a 250 XP progress boost after review.");
+            saveState();
+            renderState();
+        });
+
+        addStreakButton.addEventListener("click", () => {
+            state.stats.streak += 1;
+            addTimelineEntry("Streak protected", `Your training streak is now ${state.stats.streak} days.`);
+            saveState();
+            renderState();
+        });
+
+        completeWorkoutButton.addEventListener("click", () => {
+            state.stats.sessions += 1;
+            state.stats.hours += 1;
+            boostXp(420);
+            addWorkoutEntry("Completed Arena Session", "A fresh session was logged and your weekly output moved forward.");
+            addTimelineEntry("Workout completed", "A new training session has been added to your activity feed.");
+            saveState();
+            renderState();
+            activateTab("activity");
+        });
+
+        resetProfileButton.addEventListener("click", () => {
+            if (!confirm("Reset this dynamic profile and remove saved local data?")) {
+                return;
+            }
+
+            localStorage.removeItem(STORAGE_KEY);
+            state = cloneDefaultState();
+            saveState();
+            renderState();
+            activateTab("overview");
+        });
+
+        applyTheme(localStorage.getItem(THEME_KEY) || "dark");
+        activateTab("overview");
+        renderState();
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.16 });
+
+            document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+        } else {
+            document.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
+        }
+    </script>
+</body>
+</html>

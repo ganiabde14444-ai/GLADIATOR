@@ -1,0 +1,229 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Barbell Bench Press",
+      "muscle": "Chest",
+      "difficulty": "Intermediate",
+      "equipment": "Barbell and plates",
+      "durationMinutes": 45,
+      "format": "Upper-body strength",
+      "featured": true,
+      "accent": "#17364d",
+      "highlight": "#ffbf69",
+      "image": "photo/athlete-power.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=5NStATS0zrw",
+      "description": "A foundational press for building chest power, front delts, and triceps with a structure that is easy to track week after week.",
+      "cue": "Pin the shoulder blades down, stay stacked through the wrists, and press in one clean line.",
+      "tags": ["strength", "chest", "compound"],
+      "steps": [
+        "Plant the feet hard and brace before the bar leaves the rack.",
+        "Lower to the mid-chest with control instead of bouncing.",
+        "Drive up through the bar while keeping the ribcage stable."
+      ],
+      "benefits": [
+        "Builds a strong base for all pressing work.",
+        "Simple to progress with reps and load.",
+        "Fits both muscle-gain and strength-focused plans."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Barbell Squat",
+      "muscle": "Legs",
+      "difficulty": "Advanced",
+      "equipment": "Barbell and plates",
+      "durationMinutes": 55,
+      "format": "Lower-body strength",
+      "featured": true,
+      "accent": "#1d4752",
+      "highlight": "#ff8a5b",
+      "image": "photo/athlete-strength.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=hscOjLrW60c",
+      "description": "One of the strongest lower-body builders for quads, glutes, and trunk stability under real load.",
+      "cue": "Take a big breath, sit down and back, then drive the floor away on the way up.",
+      "tags": ["legs", "strength", "balance"],
+      "steps": [
+        "Set the bar securely and lock the upper back in first.",
+        "Break at the hips and knees together while keeping pressure through the whole foot.",
+        "Stand up with the chest proud and knees tracking cleanly."
+      ],
+      "benefits": [
+        "Builds full lower-body force and control.",
+        "Improves strength carryover into other compound lifts.",
+        "Adds real density to heavy leg-day sessions."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Conventional Deadlift",
+      "muscle": "Back",
+      "difficulty": "Advanced",
+      "equipment": "Barbell and plates",
+      "durationMinutes": 40,
+      "format": "Posterior-chain pull",
+      "featured": false,
+      "accent": "#1a3140",
+      "highlight": "#67e8db",
+      "image": "photo/athlete-hero.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=GxsLrTzyGUU",
+      "description": "A full-body pull that challenges the posterior chain, grip, and bracing quality from floor to lockout.",
+      "cue": "Keep the bar close, wedge into position, and push the floor away instead of yanking with the low back.",
+      "tags": ["back", "posterior chain", "hinge"],
+      "steps": [
+        "Stand with the bar over the mid-foot and set a firm grip.",
+        "Lift the chest and brace without letting the lower back round.",
+        "Finish by driving the hips through rather than leaning back."
+      ],
+      "benefits": [
+        "Strengthens the back, glutes, and hamstrings together.",
+        "Improves bracing awareness under heavy load.",
+        "Carries over well to athletic power output."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Seated Dumbbell Shoulder Press",
+      "muscle": "Shoulders",
+      "difficulty": "Intermediate",
+      "equipment": "Dumbbells",
+      "durationMinutes": 35,
+      "format": "Control and press",
+      "featured": true,
+      "accent": "#23404a",
+      "highlight": "#ffbf69",
+      "image": "photo/athlete-focus.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=E9ShwbwZ1zw",
+      "description": "A practical shoulder-builder that adds pressing strength while giving each side a cleaner path to work through.",
+      "cue": "Press just past ear height with a tall spine and zero lower-back overreach.",
+      "tags": ["shoulders", "control", "dumbbells"],
+      "steps": [
+        "Sit tall with ribs stacked over the hips.",
+        "Press in a smooth upward arc without clanking the weights together.",
+        "Lower under control so the shoulder stays loaded throughout the rep."
+      ],
+      "benefits": [
+        "Builds shoulder strength with more freedom of motion.",
+        "Helps expose left-right strength gaps.",
+        "Works well in both hypertrophy and control phases."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Pull-Up",
+      "muscle": "Back",
+      "difficulty": "Advanced",
+      "equipment": "Pull-up bar",
+      "durationMinutes": 25,
+      "format": "Bodyweight pull",
+      "featured": false,
+      "accent": "#1b3d48",
+      "highlight": "#67e8db",
+      "image": "photo/athlete-speed.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=OEXosPwzFdc",
+      "description": "A classic bodyweight pull for building upper-back width, grip, and clean control over the full body.",
+      "cue": "Start from a true hang and pull the elbows down instead of throwing the chin upward.",
+      "tags": ["back", "bodyweight", "grip"],
+      "steps": [
+        "Set the shoulders first before beginning the pull.",
+        "Drive the elbows toward the floor as the chest rises.",
+        "Return to a full hang slowly so each rep stays honest."
+      ],
+      "benefits": [
+        "Builds lats, grip, and relative strength.",
+        "Improves body control in vertical pulling work.",
+        "Acts as a strong benchmark for upper-body performance."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Cable Crossover",
+      "muscle": "Chest",
+      "difficulty": "Beginner",
+      "equipment": "Cable station",
+      "durationMinutes": 20,
+      "format": "Isolation work",
+      "featured": false,
+      "accent": "#163a43",
+      "highlight": "#ff8a5b",
+      "image": "photo/athlete-power.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=nhzqvWgHsxU",
+      "description": "A strong chest isolation movement for finishing with tension and shape without needing heavy loading.",
+      "cue": "Move in a soft arc and keep a slight elbow bend the whole time.",
+      "tags": ["chest", "isolation", "cable"],
+      "steps": [
+        "Lean slightly forward with the chest lifted.",
+        "Bring the handles together with a smooth squeeze out front.",
+        "Return slowly until the pecs feel stretched but still under control."
+      ],
+      "benefits": [
+        "Improves chest connection near the end of a session.",
+        "Easy to scale for newer or advanced members.",
+        "Great for adding shape without joint-heavy loading."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Hanging Leg Raise",
+      "muscle": "Core",
+      "difficulty": "Intermediate",
+      "equipment": "Pull-up bar",
+      "durationMinutes": 18,
+      "format": "Core control",
+      "featured": false,
+      "accent": "#184652",
+      "highlight": "#67e8db",
+      "image": "https://i.ytimg.com/vi/Pr1ieGZ5atk/hqdefault.jpg",
+      "imagePosition": "center 24%",
+      "imageScale": 0.9,
+      "video": "https://www.youtube.com/watch?v=Pr1ieGZ5atk",
+      "description": "A sharp core drill for lower abs and pelvic control that quickly exposes swinging, weak bracing, or rushed reps.",
+      "cue": "Lift the pelvis with the legs instead of only curling the knees upward.",
+      "tags": ["core", "control", "hanging"],
+      "steps": [
+        "Start from a steady hang and kill the swing before the first rep.",
+        "Raise the knees or legs while curling the pelvis up.",
+        "Lower slowly and reset the trunk before the next rep."
+      ],
+      "benefits": [
+        "Builds strong lower-ab control and trunk awareness.",
+        "Transfers well into athletic stability work.",
+        "Creates a serious challenge without extra equipment."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Triceps Dips",
+      "muscle": "Triceps",
+      "difficulty": "Intermediate",
+      "equipment": "Parallel bars or bench",
+      "durationMinutes": 22,
+      "format": "Bodyweight press",
+      "featured": false,
+      "accent": "#153540",
+      "highlight": "#ffbf69",
+      "image": "photo/athlete-strength.jpg",
+      "imagePosition": "center top",
+      "video": "https://www.youtube.com/watch?v=thx13oPVK5c",
+      "description": "A useful pressing option for triceps strength with extra chest involvement and plenty of room to scale up or down.",
+      "cue": "Keep the shoulders pulled back and avoid dropping deeper than your joints can control well.",
+      "tags": ["triceps", "bodyweight", "press"],
+      "steps": [
+        "Set a stable grip with the chest open and elbows tracking back.",
+        "Lower only as far as you can stay strong through the shoulder.",
+        "Press back up cleanly with a smooth lockout."
+      ],
+      "benefits": [
+        "Builds triceps strength and pressing endurance.",
+        "Works as either a main or finish-line movement.",
+        "Still effective with simple equipment at home or in the gym."
+      ]
+    }
+  ]
+}

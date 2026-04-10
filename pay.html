@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLADIATOR GYM | Secure Membership Checkout</title>
+    <meta name="description" content="Choose your Gladiator Gym membership tier and complete secure checkout for the program vault.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.program/pay.css">
+</head>
+<body>
+    <main class="checkout-page">
+        <section class="checkout-shell">
+            <aside class="checkout-info">
+                <a href="block.html" class="back-link">Back to vault preview</a>
+                <span class="info-tag">Secure membership access</span>
+                <h1>Activate Your Clearance</h1>
+                <p>Choose the access tier that matches your training rhythm, complete the secure form, and continue into the unlocked programs hub.</p>
+
+                <div class="tier-summary" id="tierSummary">
+                    <article class="summary-card active" data-tier-card="gold">
+                        <span>Gold Access</span>
+                        <strong>$69/month</strong>
+                        <p>3 coached sessions each week plus recovery and open floor access.</p>
+                    </article>
+                    <article class="summary-card" data-tier-card="elite">
+                        <span>Elite Access</span>
+                        <strong>$129/month</strong>
+                        <p>Unlimited access, coach check-ins, and priority scheduling support.</p>
+                    </article>
+                </div>
+            </aside>
+
+            <section class="pay-form">
+                <div id="success-layer" class="success-overlay" role="status" aria-live="polite">
+                    <div class="status-icon">OK</div>
+                    <h2>Access Granted</h2>
+                    <p>Verifying enrollment and opening your program vault.</p>
+                </div>
+
+                <div class="form-header">
+                    <div>
+                        <span class="form-tag">Membership tier</span>
+                        <h2>Choose your access level</h2>
+                    </div>
+                    <p>The tier pricing here now matches the home and preview pages.</p>
+                </div>
+
+                <div class="plan-toggle" role="tablist" aria-label="Membership tier">
+                    <button class="p-btn active" id="btn-gold" data-tier="gold" type="button">Gold | $69</button>
+                    <button class="p-btn" id="btn-elite" data-tier="elite" type="button">Elite | $129</button>
+                </div>
+
+                <div class="card-preview gold-mode" id="card-viz" aria-label="Card preview">
+                    <div class="card-top">
+                        <span class="tier-tag" id="tier-label">GOLD ACCESS</span>
+                        <span class="tier-price" id="tier-price">$69 / MONTH</span>
+                    </div>
+                    <div id="card-num-disp" class="num-disp">#### #### #### ####</div>
+                    <div class="card-bottom">
+                        <span id="card-name-disp">YOUR NAME</span>
+                        <span id="card-exp-disp">MM/YY</span>
+                    </div>
+                </div>
+
+                <form id="payForm" novalidate>
+                    <div class="form-grid">
+                        <label class="form-field">
+                            <span>Cardholder name</span>
+                            <input type="text" id="in-name" placeholder="Marcus Aurelius" autocomplete="cc-name" required>
+                        </label>
+
+                        <label class="form-field full">
+                            <span>Card number</span>
+                            <input type="text" id="in-num" placeholder="4242 4242 4242 4242" inputmode="numeric" autocomplete="cc-number" maxlength="19" required>
+                        </label>
+
+                        <label class="form-field">
+                            <span>Expiry</span>
+                            <input type="text" id="in-exp" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" maxlength="5" required>
+                        </label>
+
+                        <label class="form-field">
+                            <span>CVV</span>
+                            <input type="password" id="in-cvv" placeholder="123" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required>
+                        </label>
+                    </div>
+
+                    <p id="errorMessage" class="error-message" hidden></p>
+
+                    <button class="unlock-button" id="submitButton" type="submit">Unlock Programs</button>
+                    <p class="security-note">Secure 256-bit encrypted checkout. No real payment processing is connected in this demo flow.</p>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <script src="js/pay.js"></script>
+</body>
+</html>
